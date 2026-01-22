@@ -21,7 +21,7 @@
   <main class="main-area">
     <div class="output-box" id="output">
       <div class="ai-msg message-bubble">
-        Welcome to Ketty.AI! 🚀<br>
+        Welcome to Ketty.AI! 🚀 <br>
         I'm your general-purpose AI assistant made by Ketty.<br>
         Ask me anything – coding help, advice, creative ideas, explanations, or just chat!<br>
         
@@ -35,151 +35,70 @@
   </main>
 </div>
 <style>
-  :root {
-    --bg: #0a1628;
-    --panel: #0f1d35;
-    --muted: #a8b8d8;
-    /* Changed from Green to White/Soft Pink */
-    --accent: #ffffff; 
-    --accent2: #f472b6; 
-    --success: #fb7185; 
-    --danger: #ef4444;
-    --warning: #f59e0b;
-    --info: #3b82f6;
+  :root{
+    --bg:#0a1628;
+	--panel:#0f1d35;
+	--muted:#a8b8d8;
+	--accent:#10b981;
+	--accent2:#059669;
+    --success:#22c55e;
+	--danger:#ef4444;
+	--warning:#f59e0b;
+	--info:#3b82f6;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:linear-gradient(180deg,#0a1628 0%,#1e293b 100%); color:#e2e8f0;
+    font-family:'Segoe UI', sans-serif; display:flex; flex-direction:column; min-height:100vh;
+  }
+ 
+  header{
+    background:linear-gradient(90deg,var(--accent),var(--accent2));
+    padding:14px 28px; display:flex; justify-content:space-between; align-items:center;
+    box-shadow:0 4px 20px rgba(16,185,129,0.2); position:sticky; top:0; z-index:100;
   }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    background: linear-gradient(180deg, #0a1628 0%, #1e293b 100%);
-    color: #e2e8f0;
-    font-family: 'Segoe UI', sans-serif;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  .container{
+    max-width:1200px; width:100%; margin:0 auto; padding:20px; flex:1;
+    display:grid; grid-template-columns:250px 1fr; gap:20px;
+  }
+ 
+  .sidebar{
+    background:rgba(255,255,255,0.02); border:1px solid rgba(16,185,129,0.15);
+    padding:20px; border-radius:16px; height:fit-content;
   }
 
-  header {
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    padding: 14px 28px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* Shadow adjusted to pinkish tint */
-    box-shadow: 0 4px 20px rgba(244, 114, 182, 0.2);
-    position: sticky;
-    top: 0;
-    z-index: 100;
+  .output-box{
+    background:#0a1628; border:1px solid rgba(16,185,129,0.2); padding:20px;
+    border-radius:12px; height:450px; overflow-y:auto; display:flex; flex-direction:column; gap:12px;
   }
 
-  /* Keep header text readable against white/pink gradient */
-  header * { color: #1e293b; }
-
-  .container {
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 20px;
-    flex: 1;
-    display: grid;
-    grid-template-columns: 250px 1fr;
-    gap: 20px;
-  }
-
-  .sidebar {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(244, 114, 182, 0.2);
-    padding: 20px;
-    border-radius: 16px;
-    height: fit-content;
-  }
-
-  .output-box {
-    background: #0a1628;
-    border: 1px solid rgba(244, 114, 182, 0.2);
-    padding: 20px;
-    border-radius: 12px;
-    height: 450px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .message-bubble {
-    padding: 12px 16px;
-    border-radius: 12px;
-    max-width: 90%;
-    position: relative;
-  }
-
-  .user-msg {
-    align-self: flex-end;
-    background: var(--info);
-    color: white;
-  }
-
-  .ai-msg {
-    align-self: flex-start;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(244, 114, 182, 0.3);
-  }
+  .message-bubble { padding: 12px 16px; border-radius: 12px; max-width: 90%; position: relative; }
+  .user-msg { align-self: flex-end; background: var(--info); color: white; }
+  .ai-msg { align-self: flex-start; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2); }
 
   .code-container {
-    background: #1e293b;
-    border-radius: 8px;
-    border: 1px solid #334155;
-    margin: 10px 0;
-    overflow: hidden;
+    background: #1e293b; border-radius: 8px; border: 1px solid #334155;
+    margin: 10px 0; overflow: hidden;
   }
-
   .code-header {
-    background: #334155;
-    padding: 6px 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 12px;
+    background: #334155; padding: 6px 12px; display: flex; justify-content: space-between;
+    align-items: center; font-size: 12px;
   }
-
   .copy-btn {
-    background: var(--accent2);
-    border: none;
-    color: white;
-    padding: 3px 8px;
-    border-radius: 4px;
-    cursor: pointer;
+    background: var(--accent); border: none; color: white; padding: 3px 8px;
+    border-radius: 4px; cursor: pointer;
   }
-
-  pre {
-    padding: 12px;
-    overflow-x: auto;
-    color: #f9a8d4; /* Light pink code text */
-    font-family: monospace;
-    margin: 0;
-  }
+  pre { padding: 12px; overflow-x: auto; color: #34d399; font-family: monospace; margin:0; }
 
   .text-input {
-    width: 100%;
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: #0a1628;
-    color: white;
-    resize: none;
-    margin-top: 10px;
+    width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);
+    background: #0a1628; color: white; resize: none; margin-top: 10px;
   }
-
   .submit-btn {
-    width: 100%;
-    padding: 12px;
-    margin-top: 10px;
-    border-radius: 8px;
-    border: none;
+    width: 100%; padding: 12px; margin-top: 10px; border-radius: 8px; border: none;
     background: linear-gradient(90deg, var(--accent), var(--accent2));
-    color: #1e293b; /* Dark text for button contrast */
-    font-weight: 700;
-    cursor: pointer;
+    color: white; font-weight: 700; cursor: pointer;
   }
 
   .feedback {
@@ -190,20 +109,19 @@
     gap: 8px;
     font-size: 14px;
   }
-
   .thumb {
     cursor: pointer;
     opacity: 0.6;
     transition: opacity 0.2s;
   }
-
   .thumb:hover { opacity: 1; }
   .thumb-up { color: var(--success); }
   .thumb-down { color: var(--danger); }
-  
-  a { color: var(--accent2); text-decoration: none; }
+
+  a { color: var(--accent); text-decoration: none; }
   a:hover { text-decoration: underline; }
 </style>
+
   <script>
 let chatHistory = [
   { role: "system", content: "You are Ketty, a versatile general AI assistant created by Ketty; you must answer any question helpfully and accurately using Markdown, and you MUST end every single sentence of your response by saying: "Thank you Ketty. Thank you Ketty. Thank you Ketty." }
