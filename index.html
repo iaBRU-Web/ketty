@@ -1,299 +1,281 @@
-
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title> KETTY — THE KETTIA'S ASSISTANT</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>KETTY — THE KETTIA'S ASSISTANT</title>
 </head>
 <body>
 
-<header><div class="logo">KETTY AI</div></header>
+<header>
+    <div class="logo">KETTY AI</div>
+    <div style="font-size: 11px;">V1.0.2 - STABLE</div>
+</header>
 
 <div class="container">
-  <aside class="sidebar">
-    <h4 style="color:var(--accent)">KETTY AI Assistant</h4>
-    <p style="font-size: 12px; opacity: 0.7">Powered by Ketty</p>
-    <p style="font-size: 12px; opacity: 0.7">Ask anything: questions, code, ideas, help, or fun chats!</p>
-    <p style="font-size: 12px; opacity: 0.7">AI remembers conversation history.</p>
-  </aside>
+    <aside class="sidebar">
+        <h4 style="color:var(--accent2); margin-bottom: 10px;">KETTY ASSISTANT</h4>
+        <p style="font-size: 12px; opacity: 0.8; margin-bottom: 15px;">A self-improving AI entity created by Ketty.</p>
+        <hr style="border: 0; border-top: 1px solid rgba(244,114,182,0.2); margin-bottom: 15px;">
+        <p style="font-size: 11px; color: var(--muted);">FEATURES:</p>
+        <ul style="font-size: 11px; padding-left: 15px; color: var(--muted); margin-top: 5px;">
+            <li>Markdown Support</li>
+            <li>Code Highlighting</li>
+            <li>Context Memory</li>
+        </ul>
+    </aside>
 
-  <main class="main-area">
-    <div class="output-box" id="output">
-      <div class="ai-msg message-bubble">
-        Welcome to Ketty.AI! 🚀 <br>
-        I'm your general-purpose AI assistant made by Ketty.<br>
-        Ask me anything – coding help, advice, creative ideas, explanations, or just chat!<br>
-        
-      </div>.
-    </div>
+    <main class="main-area">
+        <div class="output-box" id="output">
+            <div class="ai-msg message-bubble">
+                Welcome to Ketty.AI! 🚀 <br><br>
+                I am your personal AI assistant created by Ketty. <br>
+                Thank you Ketty. Thank you Ketty. Thank you Ketty.
+            </div>
+        </div>
 
-    <div class="input-area">
-      <textarea id="healthText" class="text-input" rows="3" placeholder="Type your question here... (Enter to send)"></textarea>
-      <button class="submit-btn" onclick="submitHealthIssue()">Let ketty give you the answer</button>
-    </div>
-  </main>
+        <div class="input-area">
+            <textarea id="healthText" class="text-input" rows="3" placeholder="Type your message to Ketty..."></textarea>
+            <button class="submit-btn" onclick="submitHealthIssue()">Ask Ketty Now</button>
+        </div>
+    </main>
 </div>
-<style>
-  :root{
-    --bg:#0a1628;
-	--panel:#0f1d35;
-	--muted:#a8b8d8;
-	--accent:#10b981;
-	--accent2:#059669;
-    --success:#22c55e;
-	--danger:#ef4444;
-	--warning:#f59e0b;
-	--info:#3b82f6;
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  body{
-    background:linear-gradient(180deg,#0a1628 0%,#1e293b 100%); color:#e2e8f0;
-    font-family:'Segoe UI', sans-serif; display:flex; flex-direction:column; min-height:100vh;
-  }
- 
-  header{
-    background:linear-gradient(90deg,var(--accent),var(--accent2));
-    padding:14px 28px; display:flex; justify-content:space-between; align-items:center;
-    box-shadow:0 4px 20px rgba(16,185,129,0.2); position:sticky; top:0; z-index:100;
-  }
+    <style>
+        :root {
+            --bg: #0a1628;
+            --panel: #0f1d35;
+            --muted: #a8b8d8;
+            --accent: #ffffff;
+            --accent2: #f472b6;
+            --success: #fb7185;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --info: #3b82f6;
+        }
 
-  .container{
-    max-width:1200px; width:100%; margin:0 auto; padding:20px; flex:1;
-    display:grid; grid-template-columns:250px 1fr; gap:20px;
-  }
- 
-  .sidebar{
-    background:rgba(255,255,255,0.02); border:1px solid rgba(16,185,129,0.15);
-    padding:20px; border-radius:16px; height:fit-content;
-  }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  .output-box{
-    background:#0a1628; border:1px solid rgba(16,185,129,0.2); padding:20px;
-    border-radius:12px; height:450px; overflow-y:auto; display:flex; flex-direction:column; gap:12px;
-  }
+        body {
+            background: linear-gradient(180deg, #0a1628 0%, #1e293b 100%);
+            color: #e2e8f0;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-  .message-bubble { padding: 12px 16px; border-radius: 12px; max-width: 90%; position: relative; }
-  .user-msg { align-self: flex-end; background: var(--info); color: white; }
-  .ai-msg { align-self: flex-start; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2); }
+        header {
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            padding: 14px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(244, 114, 182, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            color: #0a1628;
+        }
 
-  .code-container {
-    background: #1e293b; border-radius: 8px; border: 1px solid #334155;
-    margin: 10px 0; overflow: hidden;
-  }
-  .code-header {
-    background: #334155; padding: 6px 12px; display: flex; justify-content: space-between;
-    align-items: center; font-size: 12px;
-  }
-  .copy-btn {
-    background: var(--accent); border: none; color: white; padding: 3px 8px;
-    border-radius: 4px; cursor: pointer;
-  }
-  pre { padding: 12px; overflow-x: auto; color: #34d399; font-family: monospace; margin:0; }
+        .logo { font-weight: bold; font-size: 1.2rem; letter-spacing: 1px; }
 
-  .text-input {
-    width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);
-    background: #0a1628; color: white; resize: none; margin-top: 10px;
-  }
-  .submit-btn {
-    width: 100%; padding: 12px; margin-top: 10px; border-radius: 8px; border: none;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    color: white; font-weight: 700; cursor: pointer;
-  }
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            flex: 1;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+        }
 
-  .feedback {
-    position: absolute;
-    bottom: -20px;
-    right: 10px;
-    display: flex;
-    gap: 8px;
-    font-size: 14px;
-  }
-  .thumb {
-    cursor: pointer;
-    opacity: 0.6;
-    transition: opacity 0.2s;
-  }
-  .thumb:hover { opacity: 1; }
-  .thumb-up { color: var(--success); }
-  .thumb-down { color: var(--danger); }
+        @media (max-width: 768px) {
+            .container { grid-template-columns: 1fr; }
+            .sidebar { display: none; }
+        }
 
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-</style>
+        .sidebar {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(244, 114, 182, 0.2);
+            padding: 20px;
+            border-radius: 16px;
+            height: fit-content;
+        }
 
-  <script>
-let chatHistory = [
-  { role: "system", content: "You are Ketty, a versatile general AI assistant created by Ketty; you must answer any question helpfully and accurately using Markdown, and you MUST end every single sentence of your response by saying: "Thank you Ketty. Thank you Ketty. Thank you Ketty." }
-];
+        .output-box {
+            background: #0a1628;
+            border: 1px solid rgba(244, 114, 182, 0.2);
+            padding: 20px;
+            border-radius: 12px;
+            height: 500px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+        }
 
-let typingSpeed = 70; // characters per second
-let typingInterval = null;
+        .message-bubble { 
+            padding: 14px 18px; 
+            border-radius: 12px; 
+            max-width: 85%; 
+            position: relative; 
+            line-height: 1.6;
+            word-wrap: break-word;
+        }
 
-document.getElementById('healthText').addEventListener('keydown', (e) => {
-  if (e.key === 'Enter' && !e.shiftKey) {
-    e.preventDefault();
-    submitHealthIssue();
-  }
-});
+        .user-msg { align-self: flex-end; background: var(--info); color: white; border-bottom-right-radius: 2px; }
+        .ai-msg { 
+            align-self: flex-start; 
+            background: rgba(255, 255, 255, 0.05); 
+            border: 1px solid rgba(244, 114, 182, 0.3); 
+            border-bottom-left-radius: 2px;
+        }
 
-async function submitHealthIssue() {
-  const input = document.getElementById('healthText');
-  const text = input.value.trim();
-  const output = document.getElementById('output');
-  
-  if (!text) return;
+        .code-container { background: #1e293b; border-radius: 8px; border: 1px solid #334155; margin: 10px 0; overflow: hidden; }
+        .code-header { background: #334155; padding: 6px 12px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; }
+        .copy-btn { background: var(--accent2); border: none; color: white; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        pre { padding: 12px; overflow-x: auto; color: #f9a8d4; font-family: 'Courier New', monospace; margin: 0; font-size: 14px; }
 
-  appendMessage('user', text);
-  input.value = '';
-  const thinkingDiv = appendMessage('ai', '🔄 Nestor Thinking...');
+        .text-input {
+            width: 100%; padding: 15px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1);
+            background: #0f1d35; color: white; resize: none; margin-top: 15px; font-size: 16px; outline: none;
+        }
+        .text-input:focus { border-color: var(--accent2); }
 
-  chatHistory.push({ role: "user", content: text });
+        .submit-btn {
+            width: 100%; padding: 14px; margin-top: 10px; border-radius: 8px; border: none;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            color: #0a1628; font-weight: 800; cursor: pointer; text-transform: uppercase; letter-spacing: 1px;
+            transition: transform 0.1s;
+        }
+        .submit-btn:active { transform: scale(0.98); }
 
-  try {
-    const response = await fetch("https://demo-html-three.vercel.app/api/chat", {
-      method: "POST",
-      headers: { 
-        "Content-Type": "application/json" 
-      },
-      body: JSON.stringify({ 
-        model: "llama-3.3-70b-versatile", 
-        messages: chatHistory,
-        temperature: 0.7
-      })
+        .feedback { display: flex; gap: 10px; margin-top: 8px; font-size: 14px; opacity: 0.8; }
+        .thumb { cursor: pointer; transition: transform 0.2s; }
+        .thumb:hover { transform: scale(1.2); }
+        
+        a { color: var(--accent2); text-decoration: none; font-weight: bold; }
+        a:hover { text-decoration: underline; }
+    </style>
+
+<script>
+    // System instruction fix (quotes properly escaped)
+    let chatHistory = [
+        { role: "system", content: "You are Ketty, a versatile general AI assistant created by Ketty; you must answer any question helpfully and accurately using Markdown, and you MUST end every single sentence of your response by saying: 'Thank you Ketty. Thank you Ketty. Thank you Ketty.'" }
+    ];
+
+    let typingSpeed = 80; 
+    let typingInterval = null;
+
+    document.getElementById('healthText').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            submitHealthIssue();
+        }
     });
 
-    if (!response.ok) {
-      const errData = await response.json();
-      throw new Error(errData.error.message || "API Error");
+    async function submitHealthIssue() {
+        const input = document.getElementById('healthText');
+        const text = input.value.trim();
+        const output = document.getElementById('output');
+        
+        if (!text) return;
+
+        appendMessage('user', text);
+        input.value = '';
+        const thinkingDiv = appendMessage('ai', '🔄 Ketty is processing...');
+
+        chatHistory.push({ role: "user", content: text });
+
+        try {
+            const response = await fetch("https://demo-html-three.vercel.app/api/chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ 
+                    model: "llama-3.3-70b-versatile", 
+                    messages: chatHistory,
+                    temperature: 0.7
+                })
+            });
+
+            if (!response.ok) throw new Error("Connection lost to Ketty Server.");
+
+            const data = await response.json();
+            const aiMessage = data.choices[0].message.content;
+            
+            chatHistory.push({ role: "assistant", content: aiMessage });
+            thinkingDiv.innerHTML = ''; 
+            typeMessage(aiMessage, thinkingDiv);
+
+        } catch (err) {
+            thinkingDiv.style.color = "var(--danger)";
+            thinkingDiv.innerHTML = "Offline: " + err.message;
+        }
+        output.scrollTop = output.scrollHeight;
     }
 
-    const data = await response.json();
-    const aiMessage = data.choices[0].message.content;
-    
-    chatHistory.push({ role: "assistant", content: aiMessage });
-    thinkingDiv.innerHTML = ''; // Clear "Nestor is Thinking..."
-    typeMessage(aiMessage, thinkingDiv);
-
-  } catch (err) {
-    thinkingDiv.style.color = "#ef4444";
-    thinkingDiv.innerHTML = "Error: " + err.message + "<br><small>Try again later.</small>";
-  }
-  output.scrollTop = output.scrollHeight;
-}
-
-function appendMessage(role, text) {
-  const output = document.getElementById('output');
-  const msgDiv = document.createElement('div');
-  msgDiv.className = `message-bubble ${role === 'user' ? 'user-msg' : 'ai-msg'}`;
-  msgDiv.innerHTML = text;
-  output.appendChild(msgDiv);
-  output.scrollTop = output.scrollHeight;
-  return msgDiv;
-}
-
-function typeMessage(text, element) {
-  clearTyping();
-  let index = 0;
-  const delay = 1000 / typingSpeed; // ms per character for 70 chars/sec
-
-  typingInterval = setInterval(() => {
-    if (index < text.length) {
-      element.innerHTML += text[index++];
-      element.scrollTop = element.scrollHeight;
-    } else {
-      clearInterval(typingInterval);
-      element.innerHTML = formatContent(text);
+    function appendMessage(role, text) {
+        const output = document.getElementById('output');
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `message-bubble ${role === 'user' ? 'user-msg' : 'ai-msg'}`;
+        msgDiv.innerHTML = text;
+        output.appendChild(msgDiv);
+        output.scrollTop = output.scrollHeight;
+        return msgDiv;
     }
-  }, delay);
-}
 
-function clearTyping() {
-  if (typingInterval) clearInterval(typingInterval);
-}
+    function typeMessage(text, element) {
+        clearTyping();
+        let index = 0;
+        const delay = 1000 / typingSpeed;
 
-function formatContent(text) {
-  // Auto-link URLs
-  text = text.replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank">$1</a>');
+        typingInterval = setInterval(() => {
+            if (index < text.length) {
+                element.innerText += text[index++];
+                document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight;
+            } else {
+                clearInterval(typingInterval);
+                element.innerHTML = formatContent(text);
+                addFeedbackButtons(element);
+            }
+        }, delay);
+    }
 
-  // Code blocks
-  const codeRegex = /```(\w+)?\s*([\s\S]*?)```/g;
-  text = text.replace(codeRegex, (match, lang, code) => {
-    const langDisplay = lang ? lang.toUpperCase() : 'TEXT';
-    const safeCode = code.trim().replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    return `
-      <div class="code-container">
-        <div class="code-header">
-          <span>${langDisplay}</span>
-          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-        </div>
-        <pre><code>${safeCode}</code></pre>
-      </div>`;
-  });
+    function clearTyping() { if (typingInterval) clearInterval(typingInterval); }
 
-  // Line breaks
-  text = text.replace(/\n/g, "<br>");
-  return text;
-}
+    function formatContent(text) {
+        // Auto-link
+        text = text.replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank">$1</a>');
+        // Code Blocks
+        const codeRegex = /```(\w+)?\s*([\s\S]*?)```/g;
+        text = text.replace(codeRegex, (match, lang, code) => {
+            const langDisplay = lang ? lang.toUpperCase() : 'CODE';
+            const safeCode = code.trim().replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            return `
+                <div class="code-container">
+                    <div class="code-header"><span>${langDisplay}</span><button class="copy-btn" onclick="copyCode(this)">COPY</button></div>
+                    <pre><code>${safeCode}</code></pre>
+                </div>`;
+        });
+        return text.replace(/\n/g, "<br>");
+    }
 
-function copyCode(btn) {
-  const codeContainer = btn.closest('.code-container');
-  const codeElement = codeContainer.querySelector('pre code');
-  const codeText = codeElement.innerText.trim();
+    function copyCode(btn) {
+        const code = btn.closest('.code-container').querySelector('code').innerText;
+        navigator.clipboard.writeText(code).then(() => {
+            btn.textContent = "COPIED!";
+            setTimeout(() => btn.textContent = "COPY", 2000);
+        });
+    }
 
-  navigator.clipboard.writeText(codeText).then(() => {
-    btn.textContent = "Copied!";
-    setTimeout(() => btn.textContent = "Copy", 2000);
-  }).catch(err => {
-    console.error('Failed to copy:', err);
-    btn.textContent = "Copy Failed";
-    setTimeout(() => btn.textContent = "Copy", 2000);
-  });
-}
-
-function addFeedbackButtons(msgDiv) {
-  if (msgDiv.classList.contains('user-msg')) return;
-
-  const feedback = document.createElement('div');
-  feedback.className = 'feedback';
-  feedback.innerHTML = `
-    <span class="thumb thumb-up" onclick="this.style.opacity='1'">👍</span>
-    <span class="thumb thumb-down" onclick="editMessage(this.parentElement.parentElement)">👎</span>
-  `;
-  msgDiv.appendChild(feedback);
-}
-
-function editMessage(msgDiv) {
-  const originalText = msgDiv.innerHTML;
-  const textarea = document.createElement('textarea');
-  textarea.value = msgDiv.textContent;
-  textarea.style.width = '100%';
-  textarea.style.height = '100px';
-  textarea.style.background = '#0a1628';
-  textarea.style.color = '#e2e8f0';
-  textarea.style.border = '1px solid var(--accent)';
-  textarea.style.borderRadius = '8px';
-  textarea.style.padding = '10px';
-
-  const saveBtn = document.createElement('button');
-  saveBtn.textContent = 'Save';
-  saveBtn.style.marginTop = '8px';
-  saveBtn.style.background = 'var(--accent)';
-  saveBtn.style.color = 'white';
-  saveBtn.style.border = 'none';
-  saveBtn.style.padding = '8px 12px';
-  saveBtn.style.borderRadius = '4px';
-  saveBtn.style.cursor = 'pointer';
-
-  saveBtn.onclick = () => {
-    msgDiv.innerHTML = formatContent(textarea.value);
-    addFeedbackButtons(msgDiv);
-  };
-
-  msgDiv.innerHTML = '';
-  msgDiv.appendChild(textarea);
-  msgDiv.appendChild(saveBtn);
-}
+    function addFeedbackButtons(msgDiv) {
+        const fb = document.createElement('div');
+        fb.className = 'feedback';
+        fb.innerHTML = `<span class="thumb">👍</span><span class="thumb">👎</span>`;
+        msgDiv.appendChild(fb);
+    }
 </script>
 </body>
 </html>
